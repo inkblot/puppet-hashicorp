@@ -1,0 +1,45 @@
+{
+  "name": "inkblot/hashicorp",
+  "version": "1.0.0",
+  "author": "inkblot",
+  "license": "Apache-2.0",
+  "summary": "HashiCorp downloads",
+  "source": "git://github.com/inkblot/puppet-hashicorp.git",
+  "project_page": "https://github.com/inkblot/puppet-hashicorp",
+  "issues_url": "https://github.com/inkblot/puppet-hashicorp/issues",
+  "tags": [ "hashicorp", "terraform", "packer", "consul", "serf", "vault" ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "7.7" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "12.04", "14.04" ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [ "6", "7" ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [ "6", "7" ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [ "20", "21", "22", "23" ]
+    },
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [ "9", "10", "10.1" ]
+    },
+    {
+      "operatingsystem": "OpenBSD",
+      "operatingsystemrelease": [ "5.5", "5.6", "5.7", "5.8" ]
+    }
+  ],
+  "dependencies": [
+    { "name": "puppet/archive" },
+    { "name": "golja/gnupg" }
+  ]
+}
