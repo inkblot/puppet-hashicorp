@@ -1,2 +1,2 @@
 ---
-hasicorp::cachedir: '/var/cache/hashicorp'
+hashicorp::cachedir: '/var/cache/hashicorp'
