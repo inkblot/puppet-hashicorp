@@ -1,0 +1,2 @@
+---
+hasicorp::cachedir: '/var/cache/hashicorp'
