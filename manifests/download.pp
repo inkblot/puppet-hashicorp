@@ -4,7 +4,7 @@ define hashicorp::download (
   $target_dir = '/usr/local/bin',
 ) {
   include '::hashicorp'
-  $cachedir = $::hashicorp::cachedir
+  $cache_dir = $::hashicorp::cache_dir
 
   case $::kernel {
     'Linux': { $_os = 'linux' }
@@ -25,9 +25,9 @@ define hashicorp::download (
   $binfile = "${name}_${version}/${name}"
 
   exec { "download ${name} ${version}":
-    command     => "/usr/local/bin/hashicorp-download.sh ${cachedir} ${name} ${version} ${_os} ${_arch}",
+    command     => "/usr/local/bin/hashicorp-download.sh ${cache_dir} ${name} ${version} ${_os} ${_arch}",
     path        => ['/bin', '/usr/bin'],
-    creates     => "${cachedir}/${name}_${version}/${name}",
+    creates     => "${cache_dir}/${name}_${version}/${name}",
   }
 
   file { "${target_dir}/${name}-${version}":
@@ -35,7 +35,7 @@ define hashicorp::download (
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    source  => "${cachedir}/${name}_${version}/${name}",
+    source  => "${cache_dir}/${name}_${version}/${name}",
     require => Exec["download ${name} ${version}"],
   }
 

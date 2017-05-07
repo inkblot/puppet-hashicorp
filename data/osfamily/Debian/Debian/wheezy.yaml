@@ -1,0 +1,2 @@
+---
+hashicorp::defaults::service_type: 'initscript'

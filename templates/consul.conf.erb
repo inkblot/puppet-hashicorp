@@ -1,0 +1,46 @@
+{
+<%- if @advertise_addr -%>
+  "advertise_addr": "<%= @advertise_addr %>",
+<%- end -%>
+<%- if @advertise_addr_wan -%>
+  "advertise_addr_wan": "<%= @advertise_addr_wan %>",
+<%- end -%>
+<%- if @bind_addr -%>
+  "bind_addr": "<%= @bind_addr %>",
+<%- end -%>
+<%- if @client_addr -%>
+  "client_addr": "<%= @client_addr %>",
+<%- end -%>
+<%- if @data_dir -%>
+  "data_dir": "<%= @data_dir %>",
+<%- end -%>
+<%- if @datacenter -%>
+  "datacenter": "<%= @datacenter %>",
+<%- end -%>
+<%- if @domain -%>
+  "domain": "<%= @domain %>",
+<%- end -%>
+<%- if @encrypt -%>
+  "encrypt": "<%= @encrypt %>",
+<%- end -%>
+<%- if @log_level -%>
+  "log_level": "<%= @log_level %>",
+<%- end -%>
+<%- if @node_name -%>
+  "node_name": "<%= @node_name %>",
+<%- end -%>
+<%- if @raft_protocol -%>
+  "raft_protocol": <%= @raft_protocol %>,
+<%- end -%>
+<%- if @retry_join -%>
+  "retry_join": [
+    "<%= Array(@retry_join).join("\",\n    \"") %>"
+  ],
+<%- end -%>
+<%- if @retry_join_wan -%>
+  "retry_join_wan": [
+    "<%= Array(@retry_join_wan).join("\",\n    \"") %>"
+  ],
+<%- end -%>
+  "server": <%= @server %>
+}

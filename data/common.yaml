@@ -1,2 +1,28 @@
 ---
-hashicorp::cachedir: '/var/cache/hashicorp'
+hashicorp::cache_dir: '/var/cache/hashicorp'
+hashicorp::install_dir: '/usr/local/bin'
+
+hashicorp::consul::config_dir: '/etc/consul'
+hashicorp::consul::install_dir: '/usr/local/bin'
+hashicorp::consul::advertise_addr: false
+hashicorp::consul::advertise_addr_wan: false
+hashicorp::consul::bootstrap: false
+hashicorp::consul::bootstrap_expect: false
+hashicorp::consul::bind_addr: false
+hashicorp::consul::data_dir: '/var/lib/consul'
+hashicorp::consul::datacenter: false
+hashicorp::consul::domain: false
+hashicorp::consul::encrypt: false
+hashicorp::consul::log_level: false
+hashicorp::consul::node_name: false
+hashicorp::consul::raft_protocol: false
+hashicorp::consul::retry_join: false
+hashicorp::consul::retry_join_wan: false
+hashicorp::consul::server: false
+hashicorp::consul::service_ensure: 'running'
+hashicorp::consul::service_enable: true
+
+hashicorp::defaults::service_type: 'systemd'
+hashicorp::defaults::systemd_dir: '/usr/lib/systemd/system'
+hashicorp::defaults::config_owner: 'root'
+hashicorp::defaults::config_group: 'root'

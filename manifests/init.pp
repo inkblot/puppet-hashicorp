@@ -1,7 +1,9 @@
 # ex: syntax=puppet si sw=2 ts=2 et
 class hashicorp (
-  $cachedir = undef,
+  $cache_dir   = undef,
+  $install_dir = undef,
 ) {
+  include '::hashicorp::defaults'
   include '::gnupg'
 
   gnupg_key { 'hashicorp':
@@ -12,7 +14,7 @@ class hashicorp (
     key_type   => public
   }
 
-  file { $cachedir:
+  file { $cache_dir:
     ensure => directory,
     owner  => 'root',
     group  => 'root',

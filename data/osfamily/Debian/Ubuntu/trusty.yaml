@@ -1,0 +1,2 @@
+---
+hashicorp::default::service_type: 'upstart'
