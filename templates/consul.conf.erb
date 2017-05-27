@@ -8,6 +8,9 @@
 <%- if @bind_addr -%>
   "bind_addr": "<%= @bind_addr %>",
 <%- end -%>
+<%- if @bootstrap_expect -%>
+  "bootstrap_expect": <%= @bootstrap_expect %>,
+<%- end -%>
 <%- if @client_addr -%>
   "client_addr": "<%= @client_addr %>",
 <%- end -%>

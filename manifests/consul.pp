@@ -6,6 +6,7 @@ class hashicorp::consul (
   $advertise_addr     = undef,
   $advertise_addr_wan = undef,
   $bind_addr          = undef,
+  $bootstrap_expect   = undef,
   $client_addr        = undef,
   $datacenter         = undef,
   $data_dir           = undef,
