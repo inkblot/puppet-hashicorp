@@ -3,6 +3,6 @@ class hashicorp::packer (
   $version,
 ) {
   hashicorp::download { 'packer':
-    version       => $version,
+    version => $version,
   }
 }

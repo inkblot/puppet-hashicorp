@@ -1,8 +1,8 @@
 # ex: syntax=puppet si sw=2 ts=2 et
-class hashicorp::consul_template (
+class hashicorp::vault (
   $version,
 ) {
-  hashicorp::download { 'consul-template':
+  hashicorp::download { 'vault':
     version => $version,
   }
 }
