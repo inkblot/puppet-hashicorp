@@ -1,12 +1,12 @@
 ## managed by Puppet ##
 [Unit]
-Description=<%= @name %> agent
+Description=<%= @name %>
 Wants=basic.target
 After=basic.target network.target
 
 [Service]
 Type=simple
-ExecStart=<%= @install_dir %>/<%= @name %> agent -config-dir=<%= @config_dir %>
+ExecStart=<%= @real_command %>
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGINT
 Restart=always

@@ -1,0 +1,8 @@
+template {
+  source = "<%= @cache_dir %>/<%= @cooked_name %>"
+  destination = "<%= @name %>"
+<%- if @command -%>
+  command = "<%= @command %>"
+<%- end -%>
+  perms = <%= @mode %>
+}

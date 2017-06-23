@@ -1,0 +1,71 @@
+consul {
+  auth {
+    enabled = <%= @consul_auth %>
+<%- if @consul_auth -%>
+    username = <%= @consul_auth_username -%>
+    password = <%= @consul_auth_password -%>
+<%- end -%>
+  }
+
+  address = "<%= @consul_address %>"
+<%- if @token -%>
+  token   = "<%= @cosul_token %>"
+<%- end -%>
+
+  retry {
+    enabled = <%= @consul_retry %>
+<%- if @consul_retry -%>
+    attempts = <%= @consul_retry_attempts %>
+    backoff = "<%= @consul_retry_backoff %>"
+    max_backoff = "<%= @consul_retry_max_backoff %>"
+<%- end -%>
+  }
+
+  ssl {
+    enabled = <%= @consul_ssl %>
+<%- if @consul_ssl -%>
+    verify = <%= @consul_ssl_verify %>
+    cert = "<%= @consul_ssl_cert %>"
+    ca_cert = "<%= @consul_ssl_ca_cert %>"
+    ca_path = "<%= @consul_ssl_ca_path %>"
+    server_name = "<%= @consul_ssl_server_name %>"
+<%- end -%>
+  }
+}
+<%- if @vault -%>
+
+vault {
+  address = "<%= @vault_address %>"
+<%-   if @vault_token -%>
+  token = "<%= @vault_token %>"
+<%-   end -%>
+<%-   if @vault_grace -%>
+  grace = "<%= @vault_grace %>"
+<%-   end -%>
+  unwrap_token = <%= @vault_unwrap_token %>
+  renew_token = <%= @vault_renew_token %>
+  
+  retry {
+    enabled = <%= @vault_retry %>
+<%-   if @vault_retry -%>
+    attempts = <%= @vault_retry_attempts %>
+    backoff = "<%= @vault_retry_backoff %>"
+    max_backoff = "<%= @vault_retry_max_backoff %>"
+<%-   end -%>
+  }
+
+  ssl {
+    enabled = <%= @vault_ssl %>
+<%-   if @vault_ssl -%>
+    verify = <%= @vault_ssl_verify %>
+    cert = "<%= @vault_ssl_cert %>"
+    ca_cert = "<%= @vault_ssl_ca_cert %>"
+    ca_path = "<%= @vault_ssl_ca_path %>"
+    server_name = "<%= @vault_ssl_server_name %>"
+<%-   end -%>
+  }
+}
+<%- end -%>
+
+log_level = "<%= @log_level %>"
+pid_file = "<%= @pid_file %>"

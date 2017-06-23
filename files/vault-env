@@ -1,0 +1,19 @@
+#!/bin/bash
+
+_SELF="${0##*/}"
+_HERE="${0%/${_SELF}}"
+
+declare -a VAULT_AUTH_ARGS
+
+while [ -n "$1" -a "$1" != "--" ]; do
+  VAULT_AUTH_ARGS+=($1)
+  shift 1
+done
+shift 1
+
+"${_HERE}/vault" auth "${VAULT_AUTH_ARGS[@]}" > /dev/null || exit 1
+
+export VAULT_TOKEN=$(cat ~/.vault-token)
+rm ~/.vault-token
+
+exec "$@"

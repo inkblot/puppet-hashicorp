@@ -1,7 +1,6 @@
 # ex: syntax=puppet si sw=2 ts=2 et
 class hashicorp::consul (
   $version,
-  $install_dir        = undef,
   $config_dir         = undef,
   $advertise_addr     = undef,
   $advertise_addr_wan = undef,
@@ -18,6 +17,7 @@ class hashicorp::consul (
   $retry_join         = undef,
   $retry_join_wan     = undef,
   $server             = undef,
+  $service            = undef,
   $service_ensure     = undef,
   $service_enable     = undef,
 ) {
@@ -25,19 +25,18 @@ class hashicorp::consul (
 
   hashicorp::download { 'consul':
     version    => $version,
-    target_dir => $install_dir,
   }
 
   File {
-    ensure  => present,
-    owner   => $::hashicorp::defaults::config_owner,
-    group   => $::hashicorp::defaults::config_group,
-    mode    => '0640',
+    ensure => present,
+    owner  => $::hashicorp::defaults::config_owner,
+    group  => $::hashicorp::defaults::config_group,
+    mode   => '0640',
   }
 
   file { $config_dir:
-    ensure  => directory,
-    mode    => '0755',
+    ensure => directory,
+    mode   => '0755',
   }
 
   file { "${config_dir}/config.json":
@@ -48,11 +47,10 @@ class hashicorp::consul (
 
   anchor { 'hashicorp::config::consul': }
 
-  hashicorp::service { 'consul':
-    ensure      => $service_ensure,
-    enable      => $service_enable,
-    provider    => $::hashicorp::defaults::service_provider,
-    install_dir => $install_dir,
-    config_dir  => $config_dir,
+  if $service {
+    class { 'hashicorp::consul::service':
+      ensure      => $service_ensure,
+      enable      => $service_enable,
+    }
   }
 }

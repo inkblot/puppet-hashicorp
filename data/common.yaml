@@ -1,9 +1,8 @@
 ---
-hashicorp::cache_dir: '/var/cache/hashicorp'
 hashicorp::install_dir: '/usr/local/bin'
+hashicorp::download_cache_dir: '/var/cache/hashicorp'
 
 hashicorp::consul::config_dir: '/etc/consul'
-hashicorp::consul::install_dir: '/usr/local/bin'
 hashicorp::consul::advertise_addr: false
 hashicorp::consul::advertise_addr_wan: false
 hashicorp::consul::bootstrap_expect: false
@@ -18,8 +17,49 @@ hashicorp::consul::raft_protocol: false
 hashicorp::consul::retry_join: false
 hashicorp::consul::retry_join_wan: false
 hashicorp::consul::server: false
+hashicorp::consul::service: true
 hashicorp::consul::service_ensure: 'running'
 hashicorp::consul::service_enable: true
+
+hashicorp::consul_template::config_dir: '/etc/consul-template'
+hashicorp::consul_template::run_dir: '/var/run/consul-template'
+hashicorp::consul_template::cache_dir: '/var/lib/consul-template'
+hashicorp::consul_template::consul_auth: false
+hashicorp::consul_template::consul_auth_username: ''
+hashicorp::consul_template::consul_auth_password: ''
+hashicorp::consul_template::consul_address: 'http://localhost:8500'
+hashicorp::consul_template::consul_token: false
+hashicorp::consul_template::consul_retry: true
+hashicorp::consul_template::consul_retry_attempts: 10
+hashicorp::consul_template::consul_retry_backoff: '250ms'
+hashicorp::consul_template::consul_retry_max_backoff: '1s'
+hashicorp::consul_template::consul_ssl: false
+hashicorp::consul_template::consul_ssl_verify: true
+hashicorp::consul_template::consul_ssl_cert: ''
+hashicorp::consul_template::consul_ssl_ca_cert: ''
+hashicorp::consul_template::consul_ssl_ca_path: ''
+hashicorp::consul_template::consul_ssl_server_name: ''
+hashicorp::consul_template::vault: false
+hashicorp::consul_template::vault_address: 'http://127.0.0.1:8200'
+hashicorp::consul_template::vault_auth_method: 'aws'
+hashicorp::consul_template::vault_token: false
+hashicorp::consul_template::vault_grace: false
+hashicorp::consul_template::vault_unwrap_token: false
+hashicorp::consul_template::vault_renew_token: true
+hashicorp::consul_template::vault_retry: false
+hashicorp::consul_template::vault_retry_attempts: 10
+hashicorp::consul_template::vault_retry_backoff: '250ms'
+hashicorp::consul_template::vault_retry_max_backoff: '1s'
+hashicorp::consul_template::vault_ssl: false
+hashicorp::consul_template::vault_ssl_verify: true
+hashicorp::consul_template::vault_ssl_cert: ''
+hashicorp::consul_template::vault_ssl_ca_cert: ''
+hashicorp::consul_template::vault_ssl_ca_path: ''
+hashicorp::consul_template::vault_ssl_server_name: ''
+hashicorp::consul_template::log_level: 'warn'
+hashicorp::consul_template::service: true
+hashicorp::consul_template::service_ensure: 'running'
+hashicorp::consul_template::service_enable: true
 
 hashicorp::defaults::service_type: 'systemd'
 hashicorp::defaults::systemd_dir: '/usr/lib/systemd/system'

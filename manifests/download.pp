@@ -1,10 +1,10 @@
 # ex: syntax=puppet si sw=2 ts=2 et
 define hashicorp::download (
   $version,
-  $target_dir = '/usr/local/bin',
 ) {
   include '::hashicorp'
-  $cache_dir = $::hashicorp::cache_dir
+  $install_dir = $::hashicorp::install_dir
+  $cache_dir = $::hashicorp::download_cache_dir
 
   case $::kernel {
     'Linux': { $_os = 'linux' }
@@ -30,7 +30,7 @@ define hashicorp::download (
     creates     => "${cache_dir}/${name}_${version}/${name}",
   }
 
-  file { "${target_dir}/${name}-${version}":
+  file { "${install_dir}/${name}-${version}":
     ensure  => present,
     owner   => 'root',
     group   => 'root',
@@ -39,9 +39,9 @@ define hashicorp::download (
     require => Exec["download ${name} ${version}"],
   }
 
-  file { "${target_dir}/${name}":
+  file { "${install_dir}/${name}":
     ensure => link,
-    target => "${target_dir}/${name}-${version}",
+    target => "${install_dir}/${name}-${version}",
     before => Anchor["hashicorp::install::${name}"],
   }
 
