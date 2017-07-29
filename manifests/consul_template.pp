@@ -75,5 +75,7 @@ class hashicorp::consul_template (
       enable      => $service_enable,
       subscribe   => File["${config_dir}/consul-template.conf"]
     }
+
+    Hashicorp::Consul_template::Template<||> ~> Service['consul-template']
   }
 }

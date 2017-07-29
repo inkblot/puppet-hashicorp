@@ -42,7 +42,6 @@ class hashicorp::consul (
   file { "${config_dir}/config.json":
     content => template('hashicorp/consul.conf.erb'),
     before  => Anchor['hashicorp::config::consul'],
-    notify  => Service['consul'],
   }
 
   anchor { 'hashicorp::config::consul': }
@@ -52,5 +51,7 @@ class hashicorp::consul (
       ensure      => $service_ensure,
       enable      => $service_enable,
     }
+
+    File["${config_dir}/config.json"] ~> Service['consul']
   }
 }
