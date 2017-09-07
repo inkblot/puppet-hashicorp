@@ -18,7 +18,7 @@ class hashicorp::consul_template::service (
       default: { fail("TODO: support vault auth -method=${vault_auth_method}") }
     }
   } else {
-    $service_command = false
+    $service_command = "${install_dir}/consul-template -config=${config_dir}"
   }
 
   hashicorp::service { 'consul-template':

@@ -3,8 +3,10 @@ define hashicorp::consul_template::template (
   $source          = undef,
   $content         = undef,
   $mode            = '0644',
-  $command         = false,
-  $command_timeout = '1s',
+  $command         = undef,
+  $command_timeout = undef,
+  $min_wait        = undef,
+  $max_wait        = undef,
 ) {
   include ::hashicorp::consul_template
 

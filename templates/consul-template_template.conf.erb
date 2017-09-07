@@ -3,6 +3,17 @@ template {
   destination = "<%= @name %>"
 <%- if @command -%>
   command = "<%= @command %>"
+<%-   if @command_timeout -%>
+  command_timeout = "<%= @command_timeout %>"
+<%-   end -%>
 <%- end -%>
   perms = <%= @mode %>
+<%- if @min_wait -%>
+  wait {
+    min = "<%= @min_wait %>"
+<%-   if @max_wait -%>
+    max = "<%= @max_wait %>"
+<%-   end -%>
+  }
+<%- end -%>
 }

@@ -62,6 +62,6 @@ hashicorp::consul_template::service_ensure: 'running'
 hashicorp::consul_template::service_enable: true
 
 hashicorp::defaults::service_type: 'systemd'
-hashicorp::defaults::systemd_dir: '/usr/lib/systemd/system'
+hashicorp::defaults::systemd_dir: '/lib/systemd/system'
 hashicorp::defaults::config_owner: 'root'
 hashicorp::defaults::config_group: 'root'
