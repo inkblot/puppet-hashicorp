@@ -11,9 +11,6 @@ while [ -n "$1" -a "$1" != "--" ]; do
 done
 shift 1
 
-"${_HERE}/vault" auth "${VAULT_AUTH_ARGS[@]}" > /dev/null || exit 1
-
-export VAULT_TOKEN=$(cat ~/.vault-token)
-rm ~/.vault-token
+export VAULT_TOKEN=$("${_HERE}/vault" auth -no-store -token-only "${VAULT_AUTH_ARGS[@]}" 2> /dev/null || exit 1)
 
 exec "$@"

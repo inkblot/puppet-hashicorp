@@ -25,10 +25,19 @@ consul {
     enabled = <%= @consul_ssl %>
 <%- if @consul_ssl -%>
     verify = <%= @consul_ssl_verify %>
+<%-   if @consul_ssl_cert and @consul_ssl_key -%>
     cert = "<%= @consul_ssl_cert %>"
+    key = "<%= @consul_ssl_key %>"
+<%-   end -%>
+<%-   if @consul_ssl_ca_cert -%>
     ca_cert = "<%= @consul_ssl_ca_cert %>"
+<%-   end -%>
+<%-   if @consul_ssl_ca_path -%>
     ca_path = "<%= @consul_ssl_ca_path %>"
+<%-   end -%>
+<%-   if @consul_ssl_server_name -%>
     server_name = "<%= @consul_ssl_server_name %>"
+<%-   end -%>
 <%- end -%>
   }
 }
@@ -58,10 +67,19 @@ vault {
     enabled = <%= @vault_ssl %>
 <%-   if @vault_ssl -%>
     verify = <%= @vault_ssl_verify %>
+<%-     if @vault_ssl_cert and @vault_ssl_key -%>
     cert = "<%= @vault_ssl_cert %>"
+    key = "<%= @vault_ssl_key %>"
+<%-     end -%>
+<%-     if @vault_ssl_ca_cert -%>
     ca_cert = "<%= @vault_ssl_ca_cert %>"
+<%-     end -%>
+<%-     if @vault_ssl_ca_path -%>
     ca_path = "<%= @vault_ssl_ca_path %>"
+<%-     end -%>
+<%-     if @vault_ssl_server_name -%>
     server_name = "<%= @vault_ssl_server_name %>"
+<%-     end -%>
 <%-   end -%>
   }
 }
