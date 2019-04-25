@@ -25,9 +25,10 @@ define hashicorp::download (
   $binfile = "${name}_${version}/${name}"
 
   exec { "download ${name} ${version}":
-    command     => "/usr/local/bin/hashicorp-download.sh ${cache_dir} ${name} ${version} ${_os} ${_arch}",
-    path        => ['/bin', '/usr/bin'],
-    creates     => "${cache_dir}/${name}_${version}/${name}",
+    command => "/usr/local/bin/hashicorp-download.sh ${cache_dir} ${name} ${version} ${_os} ${_arch}",
+    path    => ['/bin', '/usr/bin'],
+    creates => "${cache_dir}/${name}_${version}/${name}",
+    require => Gnupg_key['hashicorp'],
   }
 
   file { "${install_dir}/${name}-${version}":
